@@ -316,17 +316,17 @@ function startAdapter(options) {
         }else if(dp === 'heatsetpoint'){
             adapter.getObject(adapter.name + '.' + adapter.instance + '.' + id, function(err, obj) {
                 let controlId = obj.native.id;
-                //let val = Math.floor(state.val * 100);
-                //let parameters = `{ "${dp}": "${val}" }`;
-                let parameters = `{ "${dp}": "${state.val}" }`;
+                let val = Math.floor(state.val / 100);
+                let parameters = `{ "${dp}": "${val}" }`;
+                //let parameters = `{ "${dp}": "${state.val}" }`;
                 setSensorParameters(parameters, controlId, adapter.name + '.' + adapter.instance + '.' + id + '.' + dp)
             });
         }else if(dp === 'temperature'){
             adapter.getObject(adapter.name + '.' + adapter.instance + '.' + id, function(err, obj) {
                 let controlId = obj.native.id;
-                //let val = Math.floor(state.val * 100);
-                //let parameters = `{ "${dp}": "${val}" }`;
-                let parameters = `{ "${dp}": "${state.val}" }`;
+                let val = Math.floor(state.val * 100);
+                let parameters = `{ "${dp}": "${val}" }`;
+                //let parameters = `{ "${dp}": "${state.val}" }`;
                 setSensorParameters(parameters, controlId, adapter.name + '.' + adapter.instance + '.' + id + '.' + dp)
             });
         }
